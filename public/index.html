@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+    <main class="app" aria-label="Weather app">
+        <header class="header">
+            <h1 class="title">Weather</h1>
+            <p class="subtitle">Search a city to see current conditions.</p>
+        </header>
+
+        <section class="panel" aria-label="Search">
+            <form id="searchForm" class="search" autocomplete="off">
+                <label class="sr-only" for="cityInput">City</label>
+                <input
+                    id="cityInput"
+                    name="city"
+                    class="search__input"
+                    type="text"
+                    placeholder="Search city (e.g., Pune)"
+                    inputmode="search"
+                    required
+                />
+                <button class="search__button" type="submit">Search</button>
+            </form>
+
+            <div class="status" aria-live="polite" aria-atomic="true">
+                <p id="statusText" class="status__text"></p>
+            </div>
+        </section>
+
+        <section class="panel" aria-label="Weather result">
+            <div id="result" class="result" hidden>
+                <div class="result__top">
+                    <div>
+                        <h2 id="place" class="result__place"></h2>
+                        <p id="meta" class="result__meta"></p>
+                    </div>
+                    <div class="result__iconWrap" aria-hidden="true">
+                        <img id="icon" class="result__icon" alt="" />
+                    </div>
+                </div>
+
+                <div class="result__main">
+                    <p class="result__temp"><span id="temp"></span><span class="result__unit">°C</span></p>
+                    <p id="desc" class="result__desc"></p>
+                </div>
+
+                <div class="result__grid">
+                    <div class="metric">
+                        <p class="metric__label">Feels like</p>
+                        <p class="metric__value"><span id="feelsLike"></span>°C</p>
+                    </div>
+                    <div class="metric">
+                        <p class="metric__label">Humidity</p>
+                        <p class="metric__value"><span id="humidity"></span>%</p>
+                    </div>
+                    <div class="metric">
+                        <p class="metric__label">Wind</p>
+                        <p class="metric__value"><span id="wind"></span> m/s</p>
+                    </div>
+                    <div class="metric">
+                        <p class="metric__label">Pressure</p>
+                        <p class="metric__value"><span id="pressure"></span> hPa</p>
+                    </div>
+                </div>
+
+                <div class="hourly" aria-label="Hourly forecast">
+                    <h3 class="hourly__title">Next 24 hours</h3>
+                    <div id="hourly" class="hourly__list" role="list"></div>
+                </div>
+            </div>
+
+            <div id="empty" class="empty">
+                <p class="empty__title">No city searched yet</p>
+                <p class="empty__hint">Try: Mumbai, London, New York</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="./config.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
